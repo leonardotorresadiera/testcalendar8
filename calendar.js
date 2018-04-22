@@ -8,6 +8,7 @@ var CalendarTest = function() {
         });
         var startDate = new Date();
         $("#inputDateStart").datepicker("update", startDate);
+        $("#inputNumberDays").inputmask({"alias": "integer","autoGroup": false,"autoUnmask": true,"noshift": true});
     };
     return {
         init: function() {

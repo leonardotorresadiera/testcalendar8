@@ -16,6 +16,7 @@ var CalendarTest = function() {
         var tmp1 = d1.add(numberOfDays, 'days');
         var dateEnd = tmp1.toDate();
         console.log("dateEnd:"+dateEnd);
+        $("span.title-newdate").text("New Date End:" + dateEnd);
     };
     var getDayEndMonth = function() {
         var d1 = moment($("#inputDateStart").val(),"MM/DD/YYYY");
@@ -24,6 +25,8 @@ var CalendarTest = function() {
         return endDaysMonth;
     };
     var createMonth =  function() {
+        getNewDateEnd();
+        
         var dateInput = moment($("#inputDateStart").val(),"MM/DD/YYYY");
         var endDaysMonth = getDayEndMonth();
         var monthName = dateInput.format("MMMM YYYY");
@@ -34,26 +37,37 @@ var CalendarTest = function() {
         var i,j=0;
         html+='<div class="row"><div class="col-sm-1">S</div><div class="col-sm-1">M</div><div class="col-sm-1">T</div><div class="col-sm-1">W</div><div class="col-sm-1">T</div><div class="col-sm-1">F</div><div class="col-sm-1">S</div></div>';
 
+        var styleYellow = "#ffef96";
+        var styleGreen = "#b5e7a0";
+        var styleCell = "";
         var flag = true;
-        for (i = 0; i < 4; i++) { 
+        for (i = 0; i < 5; i++) { 
             html+='<div class="row">';
             for (j = 0; j< 7; j++) { 
                 if (flag==true) {
                     if (j>=dayOfWeek) {
-                        html+='<div class="col-sm-1">'+dayOfMonth+'</div>';        
+                        styleCell = styleGreen;
+                        if (j==0 || j==6) {
+                            styleCell = styleYellow;
+                        }
+                        html+='<div class="col-sm-1" style="background-color:'+styleCell+'">'+dayOfMonth+'</div>';        
                         dayOfMonth++;
                         flag=false;
                     }
                     else {
-                        html+='<div class="col-sm-1">&nbsp;</div>';
+                        html+='<div class="col-sm-1" style="background-color:#b2b2b2">&nbsp;</div>';
                     }
                 } 
                 else {
                     if (dayOfMonth>endDaysMonth) {
-                        html+='<div class="col-sm-1">&nbsp;</div>';        
+                        html+='<div class="col-sm-1" style="background-color:#b2b2b2">&nbsp;</div>';        
                     }
                     else {
-                        html+='<div class="col-sm-1">'+dayOfMonth+'</div>';        
+                        styleCell = styleGreen;
+                        if (j==0 || j==6) {
+                            styleCell = styleYellow;
+                        }
+                        html+='<div class="col-sm-1" style="background-color:'+styleCell+'">'+dayOfMonth+'</div>';        
                     }
                     dayOfMonth++;
                 }

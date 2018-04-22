@@ -21,13 +21,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 </head>
 <body>
+    <center><h2>Test Calendar 8</h2></center>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        Start Date <span class="symbol required"></span>
+                    </label>
+                    <input class="form-control datepickerBoot" id="inputDateStart" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Number of Days <span class="symbol required"></span>
+                    </label>
+                    <input type="text" placeholder="" class="form-control" id="inputNumberDays" name="inputNumberDays">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Country Code <span class="symbol required"></span>
+                    </label>
+                    <input type="text" placeholder="" class="form-control" id="inputCountryCode" name="inputCountryCode">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
           <div class="col-sm-12" style="background-color:ghostwhite">
             One of three columns
           </div>
         </div>
-      </div>
+    </div>
+    <script src="libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="calendar.js"></script>
 <script>
     jQuery(document).ready(function () {
